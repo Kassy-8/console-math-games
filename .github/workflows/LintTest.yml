@@ -7,28 +7,25 @@ on:
     pull_request:
       branches: [ main ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-  jobs:
+jobs:
     build:
-
-      runs-on: ubuntu-latest
+        runs-on: ubuntu-latest
     
-      strategy:
-      
-        matrix:
-        node-version: [15.x]
+        strategy:
+            matrix:
+                node-version: [15.x]
 
-      steps:
-        - uses: actions/checkout@v2
-        - name: Use Node.js ${{ matrix.node-version }}
-        - uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node-version }}
-        - name: npm install
-          run: |
-            npm ci
-          env: 
-            CI: true
-        - name: run linter
-          run: make lint
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+            - uses: actions/setup-node@v1
+              with:
+                node-version: ${{ matrix.node-version }}
+            - name: npm install
+              run: |
+                npm ci
+              env:
+                CI: true
+            - name: run linter
+              run: make lint
 
