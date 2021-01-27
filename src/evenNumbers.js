@@ -9,11 +9,7 @@ const isEvenNumber = (n) => {
 
 const doesUserRight = (rightAnswer, userAnswer) => rightAnswer === userAnswer;
 
-const numberOfRounds = 3;
-
-const brainGameEven = (round = numberOfRounds) => {
-  const userName = readLineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
+const brainGameEven = (user, round) => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   let count;
@@ -27,11 +23,11 @@ const brainGameEven = (round = numberOfRounds) => {
       count += 1;
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.
-Let's try again, ${userName}!`);
+Let's try again, ${user}!`);
       return false;
     }
   }
-  console.log(`Congratulations, ${userName}`);
+  console.log(`Congratulations, ${user}!`);
   return true;
 };
 
