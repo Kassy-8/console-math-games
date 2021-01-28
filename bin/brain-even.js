@@ -1,4 +1,4 @@
-#!/home/catherine/.asdf/shims node
+#!/home/catherine/.asdf/shims/node
 import readLineSync from 'readline-sync';
 import brainGameEven from '../src/evenNumbers.js';
 
