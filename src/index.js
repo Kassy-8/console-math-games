@@ -3,6 +3,7 @@ import * as evenNumbers from './games/game-evenNumbers.js';
 import * as calc from './games/game-calc.js';
 import * as gcd from './games/game-gcd.js';
 import * as progression from './games/game-progression.js';
+import * as prime from './games/game-prime.js';
 
 const askUserName = (message) => readLineSync.question(message);
 const getUserAnswer = (message) => readLineSync.question(message);
@@ -45,3 +46,4 @@ export const startGameEvenNumbers = () => startGame(evenNumbers);
 export const startGameCalc = () => startGame(calc);
 export const startGameGcd = () => startGame(gcd);
 export const startGameProgression = () => startGame(progression);
+export const startGamePrime = () => startGame(prime);
