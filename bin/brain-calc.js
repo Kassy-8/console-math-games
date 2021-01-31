@@ -1,4 +1,4 @@
-#!/home/catherine/.asdf/shims/node
+#!/usr/bin/env node
 import { startGameCalc } from '../src/index.js';
 
 startGameCalc();
