@@ -9,36 +9,37 @@ const askUserName = (message) => readLineSync.question(message);
 const getUserAnswer = (message) => readLineSync.question(message);
 
 const outputMessage = (message) => console.log(message);
-const outputMessageHello = (user) => console.log(`Hello, ${user}!`);
-const outputMessageWrongAnswer = (userAnswer, rightAnswer, userName) => console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.
+const outputHello = (userName) => console.log(`Hello, ${userName}!`);
+const outputQuestion = (question) => outputMessage(`Question: ${question}`);
+const outputWrongAnswer = (userAnswer, rightAnswer, userName) => console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.
 Let's try again, ${userName}!`);
-const outputMessageCongratulate = (userName) => console.log(`Congratulations, ${userName}!`);
+const outputCongratulate = (userName) => console.log(`Congratulations, ${userName}!`);
 
 const messageWelcome = 'Welcome to the Brain Games!';
 const messageAskName = 'May I have your name? ';
-const messageCorrectAnswer = 'Correct!';
+const messageRightAnswer = 'Correct!';
 const messageAnswer = 'Your answer: ';
 
 const numberOfRound = 3;
 
-const startGame = (module) => {
+const startGame = (game) => {
   outputMessage(messageWelcome);
   const userName = askUserName(messageAskName);
-  outputMessageHello(userName);
-  module.outputMessageDescription();
-  for (let count = 1; count <= numberOfRound;) {
-    module.askQuestion();
+  outputHello(userName);
+  game.outputDescription();
+  for (let i = 1; i <= numberOfRound;) {
+    outputQuestion(game.getQuestion());
     const userAnswer = getUserAnswer(messageAnswer);
-    const rightAnswer = String(module.getRightAnswer());
+    const rightAnswer = String(game.getRightAnswer());
     if (userAnswer === rightAnswer) {
-      outputMessage(messageCorrectAnswer);
-      count += 1;
+      outputMessage(messageRightAnswer);
+      i += 1;
     } else {
-      outputMessageWrongAnswer(userAnswer, rightAnswer, userName);
+      outputWrongAnswer(userAnswer, rightAnswer, userName);
       return false;
     }
   }
-  outputMessageCongratulate(userName);
+  outputCongratulate(userName);
   return true;
 };
 

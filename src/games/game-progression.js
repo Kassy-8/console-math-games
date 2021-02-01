@@ -1,34 +1,27 @@
 import _ from 'lodash';
 
-const outputMessage = (message) => console.log(message);
-const outputMessageQuestion = (question) => outputMessage(`Question: ${question}`);
-
-// 1 экспорт - описание игры
 const messageGameDescription = 'What number is missing in the progression?';
-export const outputMessageDescription = () => outputMessage(messageGameDescription);
+export const outputDescription = () => console.log(messageGameDescription);
 
-// 2 экспорт - вопрос юзеру
 const progression = [];
-let hiddenElementPosition;
+let hiddenElementIndex;
 
-const question = () => {
+export const getQuestion = () => {
   const firstElement = _.random(0, 10, false);
-  const stepOfProgression = _.random(1, 5, false);
-  const lengthOfProgression = _.random(8, 12, false);
-  hiddenElementPosition = _.random(1, lengthOfProgression, false);
+  const progressionStep = _.random(1, 10, false);
+  const progressionLastIndex = 9;
+  hiddenElementIndex = _.random(0, progressionLastIndex, false);
   progression[0] = firstElement;
 
-  for (let i = 1; i <= lengthOfProgression; i += 1) {
-    progression[i] = progression[i - 1] + stepOfProgression;
+  for (let i = 1; i <= progressionLastIndex; i += 1) {
+    progression[i] = progression[i - 1] + progressionStep;
   }
+
   const progressionForOutput = [...progression];
-  progressionForOutput[hiddenElementPosition] = '..';
+  progressionForOutput[hiddenElementIndex] = '..';
   return _.join(progressionForOutput, ' ');
 };
 
-export const askQuestion = () => outputMessageQuestion(question());
-
-// 3 экспорт - вычисление правильного ответа
-const getHiddenElement = (numbers) => numbers[hiddenElementPosition];
+const getHiddenElement = (array) => array[hiddenElementIndex];
 
 export const getRightAnswer = () => getHiddenElement(progression);

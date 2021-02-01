@@ -1,18 +1,13 @@
 import _ from 'lodash';
 
-const outputMessage = (message) => console.log(message);
-const outputMessageQuestion = (question) => outputMessage(`Question: ${question}`);
-
-// 1 экспорт - описание игры
 const messageGameDescription = 'What is the result of the expression?';
-export const outputMessageDescription = () => outputMessage(messageGameDescription);
+export const outputDescription = () => console.log(messageGameDescription);
 
-// 2 экспорт - вопрос юзеру
 let firstOperand;
 let secondOperand;
 let operator;
 
-const question = () => {
+export const getQuestion = () => {
   firstOperand = _.random(0, 10, false);
   secondOperand = _.random(0, 10, false);
   operator = _.random(1, 3, false);
@@ -26,10 +21,7 @@ const question = () => {
   }
 };
 
-export const askQuestion = () => outputMessageQuestion(question());
-
-// 3 экспорт - вычисление правильного ответа
-const getResultOfExpression = (sign) => {
+const calculateExpression = (sign) => {
   switch (sign) {
     case 1:
       return _.add(firstOperand, secondOperand);
@@ -40,4 +32,4 @@ const getResultOfExpression = (sign) => {
   }
 };
 
-export const getRightAnswer = () => getResultOfExpression(operator);
+export const getRightAnswer = () => calculateExpression(operator);
