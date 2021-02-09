@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-const messageGameDescription = 'Find the greatest common divisor of given numbers.';
-export const outputDescription = () => console.log(messageGameDescription);
+export const description = 'Find the greatest common divisor of given numbers.';
 
 let firstNumber;
 let secondNumber;

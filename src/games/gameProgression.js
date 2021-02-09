@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-const messageGameDescription = 'What number is missing in the progression?';
-export const outputDescription = () => console.log(messageGameDescription);
+export const description = 'What number is missing in the progression?';
 
 const progression = [];
 let hiddenElementIndex;

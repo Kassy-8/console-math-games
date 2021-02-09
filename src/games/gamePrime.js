@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-const messageGameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-export const outputDescription = () => console.log(messageGameDescription);
+export const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 let number;
 

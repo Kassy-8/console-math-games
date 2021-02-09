@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-const messageGameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
-export const outputDescription = () => console.log(messageGameDescription);
+export const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 let randomNumber;
 

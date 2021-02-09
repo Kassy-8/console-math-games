@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-const messageGameDescription = 'What is the result of the expression?';
-export const outputDescription = () => console.log(messageGameDescription);
+export const description = 'What is the result of the expression?';
 
 let firstOperand;
 let secondOperand;
@@ -11,6 +10,8 @@ export const getQuestion = () => {
   firstOperand = _.random(0, 10, false);
   secondOperand = _.random(0, 10, false);
   operator = _.random(1, 3, false);
+  // добавить константы описания для обозначения операторов под номерами 1, 2, 3
+  // чтобы было понятно какая операция имеется в виду
   switch (operator) {
     case 1:
       return `${firstOperand} + ${secondOperand}`;
