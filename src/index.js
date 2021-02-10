@@ -7,7 +7,31 @@ Let's try again, ${userName}!`);
 
 const numberOfRound = 3;
 
-const startGame = (game) => {
+const start = (gameDescription, game) => {
+  console.log('Welcome to the Brain Games!');
+
+  const userName = askUser('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log(gameDescription);
+
+  for (let i = 1; i <= numberOfRound; i += 1) {
+    const [question, rightAnswer] = game();
+    outputQuestion(question);
+    const userAnswer = askUser('Your answer: ');
+    if (userAnswer === rightAnswer) {
+      console.log('Correct!');
+    } else {
+      outputWrongAnswerMessage(userAnswer, rightAnswer, userName);
+      return false;
+    }
+  }
+  console.log(`Congratulations, ${userName}!`);
+  return true;
+};
+
+export default start;
+/*
+const start = (game) => {
   console.log('Welcome to the Brain Games!');
 
   const userName = askUser('May I have your name? ');
@@ -30,4 +54,5 @@ const startGame = (game) => {
   return true;
 };
 
-export default startGame;
+export default start;
+*/

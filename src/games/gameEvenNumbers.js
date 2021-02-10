@@ -2,13 +2,14 @@ import _ from 'lodash';
 
 export const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-let randomNumber;
+const getQuestion = (n) => n;
+const isEvenNumber = (n) => n % 2 === 0;
 
-export const getQuestion = () => {
-  randomNumber = _.random(0, 999, false);
-  return randomNumber;
+const gameEvenNumbers = () => {
+  const condition = _.random(0, 999, false);
+  const question = getQuestion(condition);
+  const answer = isEvenNumber(condition) ? 'yes' : 'no';
+  return [question, answer];
 };
 
-const isEvenNumber = (n) => ((n % 2 === 0) ? 'yes' : 'no');
-
-export const getRightAnswer = () => isEvenNumber(randomNumber);
+export default gameEvenNumbers;

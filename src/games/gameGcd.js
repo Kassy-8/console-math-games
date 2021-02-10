@@ -2,18 +2,11 @@ import _ from 'lodash';
 
 export const description = 'Find the greatest common divisor of given numbers.';
 
-let firstNumber;
-let secondNumber;
+const getQuestion = (firstNumber, secondNumber) => `${firstNumber} ${secondNumber}`;
 
-export const getQuestion = () => {
-  firstNumber = _.random(0, 10, false);
-  secondNumber = _.random(0, 10, false);
-  return `${firstNumber} ${secondNumber}`;
-};
-
-const getGreatCommonDivisor = (num1, num2) => {
-  const minNumber = Math.min(num1, num2);
-  const maxNumber = Math.max(num1, num2);
+const getGreatCommonDivisor = (firstNumber, secondNumber) => {
+  const minNumber = Math.min(firstNumber, secondNumber);
+  const maxNumber = Math.max(firstNumber, secondNumber);
   const residual = maxNumber % minNumber;
   if (minNumber === 0) {
     return maxNumber;
@@ -24,4 +17,12 @@ const getGreatCommonDivisor = (num1, num2) => {
   return getGreatCommonDivisor(residual, minNumber);
 };
 
-export const getRightAnswer = () => getGreatCommonDivisor(firstNumber, secondNumber);
+const gameGcd = () => {
+  const firstNumber = _.random(0, 10, false);
+  const secondNumber = _.random(0, 10, false);
+  const question = getQuestion(firstNumber, secondNumber);
+  const answer = String(getGreatCommonDivisor(firstNumber, secondNumber));
+  return [question, answer];
+};
+
+export default gameGcd;

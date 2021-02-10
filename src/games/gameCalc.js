@@ -2,6 +2,30 @@ import _ from 'lodash';
 
 export const description = 'What is the result of the expression?';
 
+const getQuestion = (firstOperand, secondOperand, operator) => `${firstOperand} ${operator} ${secondOperand}`;
+
+const calcExpression = (firstOperand, secondOperand, operator) => {
+  switch (operator) {
+    case '+':
+      return _.add(firstOperand, secondOperand);
+    case '-':
+      return _.subtract(firstOperand, secondOperand);
+    default:
+      return _.multiply(firstOperand, secondOperand);
+  }
+};
+const gameCalc = () => {
+  const firstOperand = _.random(0, 10, false);
+  const secondOperand = _.random(0, 10, false);
+  const operators = ['+', '-', '*'];
+  const operator = operators[_.random(0, 2, false)];
+  const question = getQuestion(firstOperand, secondOperand, operator);
+  const answer = String(calcExpression(firstOperand, secondOperand, operator));
+  return [question, answer];
+};
+
+export default gameCalc;
+/*
 let firstOperand;
 let secondOperand;
 let operator;
@@ -34,3 +58,4 @@ const calculateExpression = (sign) => {
 };
 
 export const getRightAnswer = () => calculateExpression(operator);
+*/
