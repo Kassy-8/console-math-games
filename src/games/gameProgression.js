@@ -2,25 +2,28 @@ import _ from 'lodash';
 
 export const description = 'What number is missing in the progression?';
 
-const progression = [];
-let hiddenElementIndex;
-
-export const getQuestion = () => {
-  const firstElement = _.random(0, 10, false);
-  const progressionStep = _.random(1, 10, false);
-  const progressionLastIndex = 9;
-  hiddenElementIndex = _.random(0, progressionLastIndex, false);
+const makeProgression = (firstElement, step, length) => {
+  const progression = [];
   progression[0] = firstElement;
-
-  for (let i = 1; i <= progressionLastIndex; i += 1) {
-    progression[i] = progression[i - 1] + progressionStep;
+  for (let i = 0; i < (length - 1); i += 1) {
+    progression[i + 1] = progression[i] + step;
   }
-
-  const progressionForOutput = [...progression];
-  progressionForOutput[hiddenElementIndex] = '..';
-  return _.join(progressionForOutput, ' ');
+  return progression;
 };
 
-const getHiddenElement = (array) => array[hiddenElementIndex];
+export default () => {
+  const firstElement = _.random(0, 10, false);
+  const step = _.random(1, 10, false);
+  const length = 10;
+  const progression = makeProgression(firstElement, step, length);
 
-export const getRightAnswer = () => getHiddenElement(progression);
+  const hiddenElementIndex = _.random(0, length - 1, false);
+  const hiddenElement = progression[hiddenElementIndex];
+
+  progression[hiddenElementIndex] = '..';
+
+  const question = _.join(progression, ' ');
+  const answer = String(hiddenElement);
+
+  return [question, answer];
+};
