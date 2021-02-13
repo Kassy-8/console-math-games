@@ -1,19 +1,19 @@
 import readLineSync from 'readline-sync';
 
 const askUser = (message) => readLineSync.question(message);
-const outputWrongAnswerMessage = (userAnswer, rightAnswer, userName) => console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.
-Let's try again, ${userName}!`);
+const makeMessageForWrongAnswer = (userAnswer, rightAnswer, userName) => `'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.
+Let's try again, ${userName}!`;
 
 const numberOfRound = 3;
 
-const start = (gameDescription, game) => {
+const startGame = (gameDescription, game) => {
   console.log('Welcome to the Brain Games!');
   const userName = askUser('May I have your name? ');
   console.log(`Hello, ${userName}!`);
 
   console.log(gameDescription);
 
-  for (let i = 1; i <= numberOfRound; i += 1) {
+  for (let i = 0; i < numberOfRound; i += 1) {
     const [question, rightAnswer] = game();
     console.log(`Question: ${question}`);
     const userAnswer = askUser('Your answer: ');
@@ -21,7 +21,8 @@ const start = (gameDescription, game) => {
     if (userAnswer === rightAnswer) {
       console.log('Correct!');
     } else {
-      outputWrongAnswerMessage(userAnswer, rightAnswer, userName);
+      const wrongAnswerMessage = makeMessageForWrongAnswer(userAnswer, rightAnswer, userName);
+      console.log(wrongAnswerMessage);
       return false;
     }
   }
@@ -30,4 +31,4 @@ const start = (gameDescription, game) => {
   return true;
 };
 
-export default start;
+export default startGame;

@@ -16,10 +16,8 @@ const isPrimeNumber = (num) => {
 };
 
 export default () => {
-  const condition = _.random(0, 100, false);
+  const questionNumber = _.random(0, 100, false);
+  const answer = isPrimeNumber(questionNumber) ? 'yes' : 'no';
 
-  const question = condition;
-  const answer = isPrimeNumber(condition) ? 'yes' : 'no';
-
-  return [question, answer];
+  return [questionNumber, answer];
 };

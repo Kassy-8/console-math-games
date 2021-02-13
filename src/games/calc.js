@@ -8,16 +8,19 @@ const calcExpression = (firstOperand, secondOperand, operator) => {
       return _.add(firstOperand, secondOperand);
     case '-':
       return _.subtract(firstOperand, secondOperand);
-    default:
+    case '*':
       return _.multiply(firstOperand, secondOperand);
+    default:
+      return false;
   }
 };
+
+const operators = ['+', '-', '*'];
 
 export default () => {
   const firstOperand = _.random(0, 10, false);
   const secondOperand = _.random(0, 10, false);
-  const operators = ['+', '-', '*'];
-  const operator = operators[_.random(0, 2, false)];
+  const operator = operators[_.random(0, operators.length - 1, false)];
 
   const question = `${firstOperand} ${operator} ${secondOperand}`;
   const answer = String(calcExpression(firstOperand, secondOperand, operator));
