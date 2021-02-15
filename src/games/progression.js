@@ -5,7 +5,7 @@ export const description = 'What number is missing in the progression?';
 const makeProgression = (firstElementOfProgression, progressionStep, progressionLength) => {
   const progression = [];
   progression[0] = firstElementOfProgression;
-  for (let i = 0; i < (progressionLength - 1); i += 1) {
+  for (let i = 0; i <= (progressionLength - 1); i += 1) {
     progression[i] = firstElementOfProgression + progressionStep * i;
   }
   return progression;

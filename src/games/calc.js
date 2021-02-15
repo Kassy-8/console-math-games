@@ -2,6 +2,8 @@ import _ from 'lodash';
 
 export const description = 'What is the result of the expression?';
 
+const operators = ['+', '-', '*'];
+
 const calcExpression = (firstOperand, secondOperand, operator) => {
   switch (operator) {
     case '+':
@@ -14,8 +16,6 @@ const calcExpression = (firstOperand, secondOperand, operator) => {
       return false;
   }
 };
-
-const operators = ['+', '-', '*'];
 
 export default () => {
   const firstOperand = _.random(0, 10, false);
