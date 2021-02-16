@@ -13,7 +13,7 @@ const calcExpression = (firstOperand, secondOperand, operator) => {
     case '*':
       return _.multiply(firstOperand, secondOperand);
     default:
-      return false;
+      throw new Error(`Unsupported math operator ${operator}`);
   }
 };
 
