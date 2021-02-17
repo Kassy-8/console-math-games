@@ -3,7 +3,7 @@ import _ from 'lodash';
 export const description = 'What number is missing in the progression?';
 
 const makeProgression = (firstElementOfProgression, progressionStep, progressionLength) => {
-  const progression = [firstElementOfProgression];
+  const progression = [];
   for (let i = 0; i < progressionLength; i += 1) {
     progression[i] = firstElementOfProgression + progressionStep * i;
   }
