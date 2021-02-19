@@ -4,7 +4,7 @@ const askUser = (message) => readLineSync.question(message);
 
 export const numberOfRound = 3;
 
-const playGame = (gameDescription, game) => {
+const playGame = (gameDescription, generateQuestionAndAnswer) => {
   console.log('Welcome to the Brain Games!');
 
   const userName = askUser('May I have your name? ');
@@ -14,7 +14,7 @@ const playGame = (gameDescription, game) => {
   console.log(gameDescription);
 
   for (let i = 0; i < numberOfRound; i += 1) {
-    const [question, rightAnswer] = game();
+    const [question, rightAnswer] = generateQuestionAndAnswer();
     const questionMessage = `Question: ${question}`;
     console.log(questionMessage);
     const userAnswer = askUser('Your answer: ');
